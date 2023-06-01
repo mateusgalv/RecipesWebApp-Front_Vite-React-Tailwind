@@ -18,8 +18,8 @@ export default function Meals() {
   return (
     <div>
       <Header />
-      <div className='transparent-background z-1'></div>
-      <div className='absolute z-2'>
+      <div className='absolute inset-0 top-14 z-0 transparent-background z-1'></div>
+      <div className='z-1'>
         {
           mealCategory !== null && (
             mealCategory.map((category) => (
