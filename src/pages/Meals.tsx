@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import useMealCategory from '../hooks/useMealCategory';
 import Header from '../components/Header';
+import '../index.css';
 
 export default function Meals() {
   const { mealCategory, fetchMealCategory } = useMealCategory();
@@ -12,18 +13,21 @@ export default function Meals() {
 
     fetchData();
   }, [fetchMealCategory])
-  
-  
+
+
   return (
     <div>
       <Header />
-      {
-        mealCategory !== null && (
-          mealCategory.map((category) => (
-            <p>{category.strCategory}</p>
-          ))
-        )
-      }
+      <div className='transparent-background z-1'></div>
+      <div className='absolute z-2'>
+        {
+          mealCategory !== null && (
+            mealCategory.map((category) => (
+              <p>{category.strCategory}</p>
+            ))
+          )
+        }
+      </div>
     </div>
   )
 }
