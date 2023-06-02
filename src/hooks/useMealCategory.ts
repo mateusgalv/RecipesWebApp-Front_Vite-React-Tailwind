@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { MEAL_CATEGORIES } from '../utils/endpoints';
 import ICategories from '../interfaces/ICategories';
 import IMealCategory from '../interfaces/IMealCategory';
-import { MEAL_CATEGORIES } from '../utils/endpoints';
 
 export default function useMealCategory(): IMealCategory {
   const [mealCategory, setMealCategory] = useState<null | ICategories[]>(null);

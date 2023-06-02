@@ -11,7 +11,7 @@ export default {
     },
     extend: {
       colors: {
-        'crayola': 'fd9f26',
+        'crayola': '#fd9f26',
         'carmine-pink': '#ee4e34',
         'rusty-red': '#d82b42',
         'meat-brown': '#e3b448',

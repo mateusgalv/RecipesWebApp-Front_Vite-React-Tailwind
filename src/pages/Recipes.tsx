@@ -33,6 +33,7 @@ export default function Recipes(props: IRecipeType) {
       {/* <div className='absolute inset-0 top-14 z-0 transparent-background z-1'></div> */}
       <div className='flex flex-wrap justify-center items-center z-1 w-3/4'>
         {
+          // To do: refactor this so that code is not repeated
           recipeType === 'meals' ? (
             mealCategory !== null && (
               mealCategory.map((category) => (
