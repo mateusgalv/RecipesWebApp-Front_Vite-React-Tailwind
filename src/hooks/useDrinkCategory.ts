@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import ICategories from '../interfaces/ICategories';
 import IDrinkCategory from '../interfaces/IDrinkCategory';
-
-const CATEGORIES_ENDPOINT = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+import { DRINK_CATEGORIES } from '../utils/endpoints';
 
 export default function useDrinkCategory(): IDrinkCategory {
   const [drinkCategory, setDrinkCategory] = useState<null | ICategories[]>(null);
@@ -10,7 +9,7 @@ export default function useDrinkCategory(): IDrinkCategory {
   const fetchDrinkCategory = async () => {
     if (drinkCategory === null) {
       try {
-        const response = await fetch(CATEGORIES_ENDPOINT);
+        const response = await fetch(DRINK_CATEGORIES);
         const data = await response.json();
         const { drinks } = data;
 

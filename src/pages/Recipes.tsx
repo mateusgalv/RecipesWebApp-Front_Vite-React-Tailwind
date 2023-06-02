@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useMealCategory from '../hooks/useMealCategory';
 import useDrinkCategory from '../hooks/useDrinkCategory';
 import Header from '../components/Header';
 import IRecipeType from '../interfaces/IRecipeType';
 import '../index.css';
-import { Link } from 'react-router-dom';
 
-export default function Meals(props: IRecipeType) {
+export default function Recipes(props: IRecipeType) {
   const { mealCategory, fetchMealCategory } = useMealCategory();
   const { drinkCategory, fetchDrinkCategory } = useDrinkCategory();
   const [recipeType, setRecipeType] = useState('');
+  const { type } = props;
 
   useEffect(() => {
     const fetchData = async () => {
-      if (Object.keys(props)[0] === 'mealsEndpoint') {
+      if (type === 'meals') {
         await fetchMealCategory();
         setRecipeType('meals');
       } else {
@@ -23,7 +24,7 @@ export default function Meals(props: IRecipeType) {
     }
 
     fetchData();
-  }, [props, fetchMealCategory, fetchDrinkCategory, setRecipeType])
+  }, [type, fetchMealCategory, fetchDrinkCategory, setRecipeType])
 
 
   return (
@@ -35,8 +36,8 @@ export default function Meals(props: IRecipeType) {
           recipeType === 'meals' ? (
             mealCategory !== null && (
               mealCategory.map((category) => (
-                <Link to={`/meals/${category.strCategory}`}>
-                  <div className='w-32 h-24 border-2 rounded m-2 flex justify-center items-center text-center' style={{ opacity: 1 }}>
+                <Link to={`/meals/${category.strCategory}`} key={category.strCategory}>
+                  <div className='w-32 h-24 border-2 rounded m-2 flex justify-center items-center text-center'>
                     <p>{category.strCategory}</p>
                   </div>
                 </Link>
@@ -45,9 +46,11 @@ export default function Meals(props: IRecipeType) {
           ) : (
             drinkCategory !== null && (
               drinkCategory.map((category) => (
-                <div className='w-32 h-24 border-2 rounded m-2 flex justify-center items-center text-center' style={{ opacity: 1 }}>
-                  <p>{category.strCategory}</p>
-                </div>
+                <Link to={`/drinks/${category.strCategory}`} key={category.strCategory}>
+                  <div className='w-32 h-24 border-2 rounded m-2 flex justify-center items-center text-center'>
+                    <p>{category.strCategory}</p>
+                  </div>
+                </Link>
               ))
             )
           )

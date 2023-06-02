@@ -1,3 +1,3 @@
 export default interface IRecipeType {
-  [key: string]: string;
+  type: string;
 }
