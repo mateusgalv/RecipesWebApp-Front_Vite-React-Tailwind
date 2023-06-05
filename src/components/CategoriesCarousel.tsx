@@ -19,8 +19,9 @@ export default function CategoriesCarousel() {
           drag='x'
         >
           {
-            array.map((_arr) => (
+            array.map((_arr, index) => (
               <motion.div
+                key={index}
                 style={{ minWidth:'60px', height:'60px', border:'1px solid black' }}
               ></motion.div>
             ))

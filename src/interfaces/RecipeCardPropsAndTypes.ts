@@ -5,6 +5,7 @@ export interface ICurrentRecipeList {
   id: string | undefined,
   recipeName: string | undefined,
   recipeThumb: string | undefined,
+  type: string,
 }
 
 export interface IMealsOrDrinks {
@@ -19,4 +20,5 @@ export interface IMealsOrDrinks {
 export type RecipeCardProps = {
   recipesByCategory: (IMealRecipe | IDrinkRecipe)[],
   recipeType: 'meals' | 'drinks',
+  handlePopUpRecipe: (type: string, id: string) => void,
 };

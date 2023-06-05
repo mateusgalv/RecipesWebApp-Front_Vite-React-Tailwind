@@ -6,7 +6,7 @@ import {
 } from "../interfaces/RecipeCardPropsAndTypes";
 
 export default function RecipeCard(
-  { recipesByCategory, recipeType }: RecipeCardProps
+  { recipesByCategory, recipeType, handlePopUpRecipe }: RecipeCardProps
 ) {
   const [
     currentRecipes,
@@ -30,6 +30,7 @@ export default function RecipeCard(
           id: idMeal ? idMeal : idDrink,
           recipeName: strMeal ? strMeal : strDrink,
           recipeThumb: strMealThumb ? strMealThumb : strDrinkThumb,
+          type: idMeal ? 'meals' : 'drinks',
         };
       });
     setCurrentRecipes(recipes);
@@ -39,9 +40,13 @@ export default function RecipeCard(
     <div className='flex flex-wrap w-11/12 ml-4 justify-start'>
       {
         currentRecipes.map((recipe) => (
-          <div className='w-32 h-52 border-2 rounded-lg m-2 flex flex-col text-center'>
+          <div
+            key={recipe.recipeName}
+            className='w-32 h-52 border-2 rounded-lg m-2 flex flex-col text-center'
+            onClick={() => handlePopUpRecipe(recipe.type, recipe.id as string)}
+          >
             <div className='h-40 '>
-              <img className='max-w-full' src={recipe.recipeThumb} alt={recipe.recipeName}/>
+              <img className='max-w-full' src={recipe.recipeThumb} alt={recipe.recipeName} />
             </div>
             <div className=''>
               <p className='text-xs'>{recipe.recipeName}</p>
