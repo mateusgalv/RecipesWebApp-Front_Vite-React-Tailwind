@@ -8,11 +8,3 @@
   height: calc(100vh - 56px);
   z-index: 0;
 }
-
-.transparent-background {
-  background-image: url('./assets/brooke-lark-08bOYnH_r_E-unsplash.jpg');
-  background-size: cover;
-  height: calc(100vh - 56px);
-  z-index: 0;
-  opacity: 0.3;
-}

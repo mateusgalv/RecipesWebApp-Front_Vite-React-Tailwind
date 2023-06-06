@@ -17,8 +17,10 @@ export default {
         'rusty-red': '#d82b42',
         'meat-brown': '#e3b448',
       },
+      backgroundImage: {
+        'home-background': "url('./src/assets/brooke-lark-08bOYnH_r_E-unsplash.jpg')",
+      },
     },
   },
   plugins: [],
 }
-
