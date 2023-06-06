@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Header from "../components/Header";
+import { UserContext } from "../context/userContext";
 
 export default function Login() {
+  const { setUser } = useContext(UserContext);
   const [login, setLogin] = useState({
     user: '',
     password: '',
@@ -19,9 +21,10 @@ export default function Login() {
   const handleLogin = () => {
     const { user, password } = login;
     if (user === 'admin' && password === 'admin') {
-      // LOGIN SUCCESSFUL
       setLoginInvalid(false);
+      setUser(user);
     } else {
+      // database pending
       setLoginInvalid(true);
     }
   };
@@ -51,7 +54,6 @@ export default function Login() {
             placeholder='password'
           />
           <p className='mt-2 text-xs text-red-500'>user: admin / password: admin</p>
-          {/* <p className='mt-2 text-xs text-red-500 overflow-wrap'>*You can only use sign in option with my backend API</p> */}
         </form>
         <div className='flex justify-center mt-2 mb-5'>
           <button
@@ -66,6 +68,7 @@ export default function Login() {
             Sign up
           </button>
         </div>
+        {/* <p className='mt-2 text-xs text-red-500 overflow-wrap'>*You can only use sign in option with my backend API</p> */}
       </div>
     </div>
   )

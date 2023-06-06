@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import '../index.css';
+import Background from '../components/Background';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -11,17 +11,15 @@ export default function Home() {
 
   const handleGetStartedBtn = () => {
     navigate('/meals');
-  }
+  };
 
   return (
     <>
       <header>
         <Header />
       </header>
-      <div className='background-container flex items-center justify-center'>
-        <div
-          className='w-64'
-        >
+      <Background>
+        <div className='w-1/4'>
           <h1 className='text-2xl'>Recipes Web App</h1>
           <p>
             Cook your favorite
@@ -42,7 +40,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </div>
+      </Background>
     </>
   )
 }

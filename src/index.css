@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.background-container {
+.background-image-container {
   background-image: url('./assets/brooke-lark-08bOYnH_r_E-unsplash.jpg');
   background-size: cover;
+  position: absolute;
   height: calc(100vh - 56px);
+  width: 100vw;
   z-index: 0;
 }

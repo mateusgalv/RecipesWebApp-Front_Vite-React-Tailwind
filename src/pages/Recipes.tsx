@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import useMealCategory from '../hooks/useMealCategory';
 import useDrinkCategory from '../hooks/useDrinkCategory';
 import Header from '../components/Header';
 import IRecipeType from '../interfaces/IRecipeType';
 import '../index.css';
+import RecipeCategory from '../components/RecipeCategory';
+import Background from '../components/Background';
 
 export default function Recipes(props: IRecipeType) {
   const { mealCategory, fetchMealCategory } = useMealCategory();
@@ -30,33 +31,17 @@ export default function Recipes(props: IRecipeType) {
   return (
     <div>
       <Header />
-      {/* <div className='absolute inset-0 top-14 z-0 transparent-background z-1'></div> */}
-      <div className='flex flex-wrap justify-center items-center z-1 w-3/4'>
-        {
-          // To do: refactor this so that code is not repeated
-          recipeType === 'meals' ? (
-            mealCategory !== null && (
-              mealCategory.map((category) => (
-                <Link to={`/meals/${category.strCategory}`} key={category.strCategory}>
-                  <div className='w-32 h-24 border-2 rounded m-2 flex justify-center items-center text-center'>
-                    <p>{category.strCategory}</p>
-                  </div>
-                </Link>
-              ))
-            )
-          ) : (
-            drinkCategory !== null && (
-              drinkCategory.map((category) => (
-                <Link to={`/drinks/${category.strCategory}`} key={category.strCategory}>
-                  <div className='w-32 h-24 border-2 rounded m-2 flex justify-center items-center text-center'>
-                    <p>{category.strCategory}</p>
-                  </div>
-                </Link>
-              ))
-            )
-          )
-        }
-      </div>
+      <Background>
+        <div className='flex flex-wrap justify-center items-center z-1 w-3/4'>
+          {
+            <RecipeCategory
+              recipeType={recipeType}
+              mealCategory={mealCategory}
+              drinkCategory={drinkCategory}
+            />
+          }
+        </div>
+      </Background>
     </div>
   )
 }
