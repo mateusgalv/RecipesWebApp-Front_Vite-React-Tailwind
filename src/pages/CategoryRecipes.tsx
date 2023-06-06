@@ -30,7 +30,7 @@ export default function CategoryRecipes() {
     fetchData();
   }, [fetchData])
 
-  const handlePopUpRecipe = async (recipeType: string, id: string) => {   
+  const handlePopUpRecipe = async (recipeType: string, id: string) => {
     if (hasSelectedRecipe === false) {
       await fetchRecipe(recipeType, id);
       setHasSelectedRecipe(true);
@@ -38,7 +38,7 @@ export default function CategoryRecipes() {
       setHasSelectedRecipe(false);
     }
   }
-  
+
   return (
     <div>
       <Header />
@@ -46,7 +46,9 @@ export default function CategoryRecipes() {
       <div>
         {
           hasSelectedRecipe ? (
-            <div>
+            <div
+              className='flex flex-col bg border-solid border rounded-xl border-rusty-red mx-auto mt-4 w-5/6'
+            >
               <SelectedRecipe
                 actualRecipe={actualRecipe as IRecipeById}
                 handlePopUpRecipe={handlePopUpRecipe}

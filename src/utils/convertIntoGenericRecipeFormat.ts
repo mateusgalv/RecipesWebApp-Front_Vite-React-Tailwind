@@ -1,4 +1,4 @@
-import { IDrinkById, IMealById, IRecipeById } from "../interfaces/IRecipeById";
+import { IRecipeById } from "../interfaces/IRecipeById";
 
 export default function convertIntoGenericRecipeFormat(actualRecipe: IRecipeById) {
   return {
